@@ -7,6 +7,22 @@
   display: none !important;
 }
 
+#services,
+#analytics,
+#outputs,
+#equipment,
+#claims {
+  padding-top: clamp(36px, 5vw, 72px);
+}
+
+#services .section-heading,
+#analytics .section-heading,
+#outputs .section-heading,
+#equipment .section-heading,
+#claims .section-heading {
+  margin-bottom: 24px;
+}
+
 .centered { margin-left: auto; margin-right: auto; text-align: center; }
 
 .analytics-showcase {
