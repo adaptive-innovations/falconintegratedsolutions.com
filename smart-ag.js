@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.site-nav');
   if (nav) {
-    nav.innerHTML = '<a href="#services">Services</a><a href="#workflow">Workflow</a><a href="#outputs">Outputs</a><a href="#equipment">Equipment</a><a class="nav-cta" href="#contact">Contact</a>';
+    nav.innerHTML = '<a href="#services">Services</a><a href="#analytics">Maps</a><a href="#outputs">Outputs</a><a href="#equipment">Equipment</a><a class="nav-cta" href="#contact">Contact</a>';
   }
 
   const main = document.querySelector('main');
+  const hero = document.querySelector('.hero');
   const contact = document.querySelector('#contact');
+  const analytics = document.querySelector('#analytics');
   const engage = document.querySelector('#engage');
   if (!main || !contact) return;
   if (engage) engage.remove();
@@ -29,19 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   `;
 
-  const workflow = document.createElement('section');
-  workflow.id = 'workflow';
-  workflow.className = 'section section-pad';
-  workflow.innerHTML = `
+  const fieldAction = document.createElement('section');
+  fieldAction.id = 'field-action';
+  fieldAction.className = 'section section-pad';
+  fieldAction.innerHTML = `
     <div class="section-heading centered">
-      <p class="eyebrow">Service Flow</p>
-      <h2>Imagery → analysis → operation layer → delivery</h2>
+      <p class="eyebrow">From Maps to Action</p>
+      <h2>Review the field. Plan the next step. Share the right file.</h2>
     </div>
     <div class="flow-grid">
-      <article class="flow-card"><span>01</span><h3>Field Review</h3><p>Crop stress, variability, anomaly detection, weed detection, boundaries, obstacles, and RGB / multispectral / satellite review.</p></article>
-      <article class="flow-card"><span>02</span><h3>Treatment & Action Planning</h3><p>Scouting priorities, sampling zones, treatment plans, zonation, prescription planning, and targeted operations.</p></article>
-      <article class="flow-card"><span>03</span><h3>Monitoring</h3><p>Progress tracking, treatment effectiveness, date-to-date comparison, crop health monitoring, and field documentation.</p></article>
-      <article class="flow-card"><span>04</span><h3>Export & Share</h3><p>PDF reports, interactive map links, GIS-compatible files, prescription maps, and equipment-ready exports.</p></article>
+      <article class="flow-card"><span>01</span><h3>Field Review</h3><p>Review crop stress, variability, anomalies, weeds, boundaries, obstacles, and imagery layers.</p></article>
+      <article class="flow-card"><span>02</span><h3>Action Planning</h3><p>Prioritize scouting, sampling, treatment planning, zonation, prescriptions, and targeted operations.</p></article>
+      <article class="flow-card"><span>03</span><h3>Monitoring</h3><p>Track progress, treatment effectiveness, crop health changes, and field conditions over time.</p></article>
+      <article class="flow-card"><span>04</span><h3>Export & Share</h3><p>Deliver reports, interactive map links, GIS files, prescription maps, and equipment-ready exports.</p></article>
     </div>
   `;
 
@@ -88,5 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   `;
 
-  [services, workflow, outputs, equipment, claims].forEach((section) => main.insertBefore(section, contact));
+  const insertAfterHero = hero && hero.nextSibling ? hero.nextSibling : main.firstChild;
+  [services, fieldAction].forEach((section) => main.insertBefore(section, insertAfterHero));
+  if (analytics) main.insertBefore(analytics, outputs);
+  [outputs, equipment, claims].forEach((section) => main.insertBefore(section, contact));
 });
