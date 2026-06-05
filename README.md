@@ -11,3 +11,5 @@ Recommended settings:
 - Folder: `/ (root)`
 
 The site is built as plain HTML/CSS for GitHub Pages.
+
+<!-- harmless connector write test: success -->
