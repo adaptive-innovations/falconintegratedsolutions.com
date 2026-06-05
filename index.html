@@ -11,7 +11,9 @@
   <style>
     .analytics-showcase {
       position: relative;
-      min-height: 480px;
+      width: min(100%, 760px);
+      aspect-ratio: 16 / 9;
+      align-self: start;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: calc(var(--radius) + 8px);
@@ -24,9 +26,10 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #1b2427;
       opacity: 0;
-      transform: scale(1.015);
+      transform: scale(1.01);
       transition: opacity 220ms ease, transform 480ms ease;
     }
 
@@ -37,14 +40,15 @@
 
     .analytics-caption {
       position: absolute;
-      left: 24px;
-      bottom: 24px;
-      max-width: calc(100% - 48px);
-      padding: 10px 14px;
+      left: 18px;
+      bottom: 18px;
+      max-width: calc(100% - 36px);
+      padding: 8px 12px;
       border-radius: 999px;
       color: var(--white);
       background: rgba(17, 24, 27, 0.72);
       font-weight: 850;
+      font-size: 0.92rem;
     }
 
     .analytics-list .analytics-card {
@@ -59,10 +63,6 @@
       background: rgba(255,255,255,0.16);
       transform: translateY(-2px);
       outline: none;
-    }
-
-    @media (max-width: 780px) {
-      .analytics-showcase { min-height: 360px; }
     }
   </style>
 </head>
