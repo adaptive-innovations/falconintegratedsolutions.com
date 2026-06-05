@@ -1,0 +1,153 @@
+.centered { margin-left: auto; margin-right: auto; text-align: center; }
+
+.value-grid,
+.flow-grid,
+.outputs-layout,
+.equipment-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.value-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.value-card,
+.flow-card,
+.output-column,
+.equipment-card,
+.claims-panel {
+  border: 1px solid rgba(220, 228, 226, 0.80);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 12px 30px rgba(17, 24, 27, 0.08);
+}
+
+.value-card,
+.flow-card,
+.output-column {
+  padding: 28px;
+}
+
+.value-card img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+
+.value-card p,
+.flow-card p,
+.output-column li,
+.equipment-card p,
+.claims-panel p,
+.claim-list span {
+  color: var(--slate);
+}
+
+.flow-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.flow-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  color: var(--white);
+  background: var(--blue-dark);
+  font-weight: 900;
+}
+
+.outputs-layout {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.output-column {
+  color: var(--gunmetal);
+}
+
+.check-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.check-list li + li {
+  margin-top: 9px;
+}
+
+.equipment-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.equipment-card {
+  overflow: hidden;
+}
+
+.equipment-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.equipment-card div {
+  padding: 24px;
+}
+
+.claims-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 28px;
+  align-items: center;
+  padding: clamp(28px, 4vw, 46px);
+}
+
+.claim-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.claim-list li {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid rgba(220, 228, 226, 0.80);
+  border-radius: 18px;
+  background: rgba(247, 250, 248, 0.92);
+}
+
+.claim-list strong {
+  color: var(--green-dark);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+@media (max-width: 1080px) {
+  .value-grid,
+  .flow-grid,
+  .outputs-layout,
+  .equipment-grid,
+  .claims-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .value-grid,
+  .flow-grid,
+  .outputs-layout,
+  .equipment-grid,
+  .claims-panel,
+  .claim-list li {
+    grid-template-columns: 1fr;
+  }
+}
