@@ -8,6 +8,63 @@
   <link rel="icon" type="image/png" href="media/favicon.png" />
   <link rel="apple-touch-icon" href="media/favicon.png" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .analytics-showcase {
+      position: relative;
+      min-height: 480px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: calc(var(--radius) + 8px);
+      background: #1b2427;
+      box-shadow: var(--shadow);
+    }
+
+    .analytics-showcase img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.015);
+      transition: opacity 220ms ease, transform 480ms ease;
+    }
+
+    .analytics-showcase img.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .analytics-caption {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      max-width: calc(100% - 48px);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(17, 24, 27, 0.72);
+      font-weight: 850;
+    }
+
+    .analytics-list .analytics-card {
+      cursor: default;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .analytics-list .analytics-card.active,
+    .analytics-list .analytics-card:hover,
+    .analytics-list .analytics-card:focus {
+      border-color: rgba(255,255,255,0.42);
+      background: rgba(255,255,255,0.16);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    @media (max-width: 780px) {
+      .analytics-showcase { min-height: 360px; }
+    }
+  </style>
 </head>
 <body id="home">
   <header class="site-header">
@@ -16,11 +73,8 @@
       <span>Falcon Integrated Solutions</span>
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="#services">Services</a>
       <a href="#engage">Engage</a>
-      <a href="#process">Process</a>
       <a href="#analytics">Analytics</a>
-      <a href="#example">Example</a>
       <a class="nav-cta" href="#contact">Contact</a>
     </nav>
   </header>
@@ -29,11 +83,11 @@
     <section class="hero section-pad">
       <div class="hero-copy">
         <p class="eyebrow">Agricultural Drone Mapping & Field Intelligence</p>
-        <h1>From field scan to action plan.</h1>
+        <h1 style="font-size: clamp(2.7rem, 6.2vw, 5.6rem);">From field scan to action plan.</h1>
         <p class="hero-lede">Falcon helps growers identify field variation, prioritize scouting, and plan targeted action with practical aerial analytics.</p>
         <div class="hero-actions">
           <a class="button primary" href="#contact">Request a Field Scan</a>
-          <a class="button secondary" href="#process">See the Process</a>
+          <a class="button secondary" href="#engage">How It Works</a>
         </div>
       </div>
       <div class="hero-panel" aria-label="Field intelligence summary">
@@ -51,47 +105,17 @@
       </div>
     </section>
 
-    <section id="services" class="section section-pad">
-      <div class="section-heading">
-        <p class="eyebrow">Services & Value</p>
-        <h2>What we help you do</h2>
-        <p>Falcon turns field imagery into clear, practical outputs for growers, managers, agronomists, and application teams.</p>
-      </div>
-      <div class="card-grid six">
-        <article class="icon-card"><span class="icon">⌖</span><h3>Find Problem Areas</h3><p>Identify stress, weeds, damage, or inconsistent growth across the field.</p></article>
-        <article class="icon-card"><span class="icon">◎</span><h3>Prioritize Scouting</h3><p>Know where to walk, inspect, sample, or verify first.</p></article>
-        <article class="icon-card"><span class="icon">◧</span><h3>Plan Targeted Treatment</h3><p>Support microspray, spot-spray, and variable-rate workflows.</p></article>
-        <article class="icon-card"><span class="icon">▣</span><h3>Document Conditions</h3><p>Create maps and reports for management, insurance, replanting, or treatment decisions.</p></article>
-        <article class="icon-card"><span class="icon">↯</span><h3>Reduce Waste</h3><p>Avoid unnecessary blanket applications where targeted treatment makes sense.</p></article>
-        <article class="icon-card"><span class="icon">↗</span><h3>Move Faster</h3><p>Get practical maps and reports quickly enough to support real field decisions.</p></article>
-      </div>
-    </section>
-
     <section id="engage" class="section section-pad muted">
       <div class="section-heading">
         <p class="eyebrow">How to Engage Falcon</p>
-        <h2>Flexible ways to start</h2>
+        <h2>From field insight to next action</h2>
       </div>
       <div class="card-grid four">
-        <article class="text-card"><h3>One-Time Field Scan</h3><p>A current snapshot of field conditions when something looks off or a decision is coming up.</p></article>
-        <article class="text-card"><h3>Seasonal Monitoring</h3><p>Recurring scans to compare crop development, treatment response, or changing field conditions over time.</p></article>
-        <article class="text-card"><h3>Targeted Investigation</h3><p>Focused analysis around weed pressure, crop stress, irrigation concerns, storm damage, or weak zones.</p></article>
-        <article class="text-card"><h3>Treatment Planning Support</h3><p>Maps and zone summaries to support microspray, spot-spray, or compatible precision-ag workflows.</p></article>
+        <article class="text-card"><h3>Start with a Field Review</h3><p>We discuss crop, acreage, timing, known concerns, and the decision you need to make.</p></article>
+        <article class="text-card"><h3>Choose the Right Scan</h3><p>Falcon recommends a one-time scan, seasonal monitoring, targeted investigation, or treatment planning support.</p></article>
+        <article class="text-card"><h3>Review the Analytics</h3><p>We walk through field maps, crop health patterns, zones, and the areas that deserve attention.</p></article>
+        <article class="text-card"><h3>Plan the Next Action</h3><p>Use the results to guide scouting, sampling, treatment planning, documentation, or further agronomic review.</p></article>
       </div>
-    </section>
-
-    <section id="process" class="section section-pad">
-      <div class="section-heading">
-        <p class="eyebrow">Process</p>
-        <h2>Simple process. Practical outputs.</h2>
-      </div>
-      <ol class="process-list">
-        <li><strong>Discuss the field</strong><span>Crop, acreage, timing, concern, and decision needed.</span></li>
-        <li><strong>Capture imagery</strong><span>Scan the target area or use available imagery where appropriate.</span></li>
-        <li><strong>Analyze variation</strong><span>Identify crop health patterns, weeds, damage, or treatment zones.</span></li>
-        <li><strong>Review findings</strong><span>Walk through the maps and what they suggest.</span></li>
-        <li><strong>Support action</strong><span>Provide reports, zone maps, and planning files where useful.</span></li>
-      </ol>
     </section>
 
     <section id="analytics" class="section section-pad dark">
@@ -101,64 +125,31 @@
         <p>You receive visual maps and plain-English summaries designed to help decide where to scout, what areas need attention, and where targeted action may make sense.</p>
       </div>
       <div class="analytics-layout">
-        <div class="map-mock" aria-label="Representative analytics visualization">
-          <div class="field-shape zone-a"></div>
-          <div class="field-shape zone-b"></div>
-          <div class="field-shape zone-c"></div>
-          <div class="map-label">Representative Zone Map</div>
+        <div class="analytics-showcase" aria-label="Analytics preview images">
+          <img class="active" data-preview="orthomosaic" src="media/orthomosaic.jpg" alt="Orthomosaic field map preview" />
+          <img data-preview="vegetation" src="media/vegetation-index-map.jpg" alt="Vegetation index map preview" />
+          <img data-preview="zonation" src="media/zonation-map.jpg" alt="Zonation map preview" />
+          <img data-preview="annotations" src="media/annotations.jpg" alt="Annotated field map preview" />
+          <img data-preview="surface" src="media/digital-surface-model.jpg" alt="Digital surface model preview" />
+          <img data-preview="prescription" src="media/spot-spraying-prescription-maps.jpg" alt="Spot spraying prescription map preview" />
+          <div class="analytics-caption" id="analytics-caption">Orthomosaic Field Map</div>
         </div>
         <div class="analytics-list">
-          <div><h3>Field Map</h3><p>Clear aerial context for the area being evaluated.</p></div>
-          <div><h3>Crop Health Layer</h3><p>Visual indication of vigor, stress, or performance variation.</p></div>
-          <div><h3>Zone Map</h3><p>Grouped areas for scouting, treatment planning, or follow-up review.</p></div>
-          <div><h3>Summary Report</h3><p>Acreage, observations, maps, and recommended next-step discussion.</p></div>
+          <div class="analytics-card active" tabindex="0" data-target="orthomosaic" data-label="Orthomosaic Field Map"><h3>Orthomosaic Field Map</h3><p>Clear aerial context for the area being evaluated.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="vegetation" data-label="Vegetation Index Map"><h3>Vegetation Index Map</h3><p>Visual indication of vigor, stress, or performance variation.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="zonation" data-label="Zonation Map"><h3>Zonation Map</h3><p>Grouped areas for scouting, treatment planning, or follow-up review.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="annotations" data-label="Annotations"><h3>Annotations</h3><p>Marked observations, notes, measurements, and points of interest.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="surface" data-label="Digital Surface Model"><h3>Digital Surface Model</h3><p>Elevation-style context that can help reveal drainage, terrain, or canopy patterns.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="prescription" data-label="Spot-Spraying Prescription Maps"><h3>Spot-Spraying Prescription Maps</h3><p>Planning outputs for compatible targeted application workflows.</p></div>
         </div>
-      </div>
-    </section>
-
-    <section id="example" class="section section-pad">
-      <div class="case-study">
-        <div>
-          <p class="eyebrow">Representative Example</p>
-          <h2>Microspray Planning Example</h2>
-          <p>A grower sees uneven weed pressure or crop stress, but the issue is not spread evenly across the whole field. Blanket treatment may waste product, labor, and time.</p>
-          <p>Falcon maps the field, identifies target zones, estimates affected acreage, and prepares outputs that can support scouting, planning, and compatible application workflows.</p>
-          <p class="fine-print">Actual results depend on crop, timing, field conditions, equipment compatibility, and grower decisions.</p>
-        </div>
-        <div class="value-list">
-          <h3>Expected value</h3>
-          <ul>
-            <li>Reduce unnecessary application</li>
-            <li>Estimate affected acreage</li>
-            <li>Create clearer treatment boundaries</li>
-            <li>Support better documentation</li>
-            <li>Improve confidence before sending equipment into the field</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="deliverables" class="section section-pad muted">
-      <div class="section-heading">
-        <p class="eyebrow">Deliverables</p>
-        <h2>What you receive</h2>
-      </div>
-      <div class="deliverables">
-        <span>Field maps</span>
-        <span>Crop health maps</span>
-        <span>Zone maps</span>
-        <span>Scouting priorities</span>
-        <span>Affected-area summaries</span>
-        <span>PDF reports</span>
-        <span>Exportable planning files where compatible</span>
       </div>
     </section>
 
     <section id="contact" class="section section-pad contact-section">
       <div>
         <p class="eyebrow">Contact</p>
-        <h2>Start with a field conversation.</h2>
-        <p>Tell us what you grow, what you are seeing, and what decision you need to make. Falcon will recommend whether a one-time scan, recurring monitoring, or targeted analysis makes sense.</p>
+        <h2>Start with a field review.</h2>
+        <p>Tell us what you grow, what you are seeing, and what decision you need to make.</p>
       </div>
       <a class="button primary large" href="mailto:info@falconintegratedsolutions.com?subject=Field%20Scan%20Request">Request a Field Scan</a>
     </section>
@@ -171,6 +162,7 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
     const logo = document.getElementById('site-logo');
     const candidates = [
       'media/logo.png',
@@ -185,6 +177,23 @@
       logoIndex += 1;
       if (logoIndex < candidates.length) logo.src = candidates[logoIndex];
       else logo.style.display = 'none';
+    });
+
+    const previewImages = document.querySelectorAll('.analytics-showcase img[data-preview]');
+    const previewCards = document.querySelectorAll('.analytics-card[data-target]');
+    const previewCaption = document.getElementById('analytics-caption');
+
+    function setPreview(target, label) {
+      previewImages.forEach((img) => img.classList.toggle('active', img.dataset.preview === target));
+      previewCards.forEach((card) => card.classList.toggle('active', card.dataset.target === target));
+      if (previewCaption) previewCaption.textContent = label;
+    }
+
+    previewCards.forEach((card) => {
+      const activate = () => setPreview(card.dataset.target, card.dataset.label);
+      card.addEventListener('mouseenter', activate);
+      card.addEventListener('focus', activate);
+      card.addEventListener('click', activate);
     });
   </script>
 </body>
