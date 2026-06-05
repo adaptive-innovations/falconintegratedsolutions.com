@@ -53,6 +53,15 @@ Guidance for AI/code agents working in this repository.
 - Do not invent phone numbers, addresses, pricing, certifications, licenses, partner relationships, guarantees, or legal claims.
 - Do not imply pesticide application, chemical recommendation, aviation compliance, or regulatory authority unless source material explicitly supports it.
 
+## Brand colors
+
+- Primary Green: `#70A040`, RGB `112, 160, 64`, Pantone `7741 C`.
+- Primary Blue: `#4080C0`, RGB `64, 128, 192`, Pantone `7683 C`.
+- Falcon Green range: dark `#609030`, mid-tone `#70A040`, light `#80B050`.
+- Circle Blue range: dark `#3070B0`, mid-tone `#4080C0`, light `#6090D0`.
+- Text Gray range: approximately `#7A7A7A` to `#888888`.
+- Preserve the logo colors unless a task explicitly asks for an alternate palette.
+
 ## Factual claims and risk-sensitive content
 
 - Treat agronomic, pesticide, regulatory, aviation, and compliance claims carefully.
