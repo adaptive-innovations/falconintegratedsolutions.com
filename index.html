@@ -8,6 +8,63 @@
   <link rel="icon" type="image/png" href="media/favicon.png" />
   <link rel="apple-touch-icon" href="media/favicon.png" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .analytics-showcase {
+      position: relative;
+      min-height: 480px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: calc(var(--radius) + 8px);
+      background: #1b2427;
+      box-shadow: var(--shadow);
+    }
+
+    .analytics-showcase img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.015);
+      transition: opacity 220ms ease, transform 480ms ease;
+    }
+
+    .analytics-showcase img.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .analytics-caption {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      max-width: calc(100% - 48px);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(17, 24, 27, 0.72);
+      font-weight: 850;
+    }
+
+    .analytics-list .analytics-card {
+      cursor: default;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .analytics-list .analytics-card.active,
+    .analytics-list .analytics-card:hover,
+    .analytics-list .analytics-card:focus {
+      border-color: rgba(255,255,255,0.42);
+      background: rgba(255,255,255,0.16);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    @media (max-width: 780px) {
+      .analytics-showcase { min-height: 360px; }
+    }
+  </style>
 </head>
 <body id="home">
   <header class="site-header">
@@ -68,17 +125,22 @@
         <p>You receive visual maps and plain-English summaries designed to help decide where to scout, what areas need attention, and where targeted action may make sense.</p>
       </div>
       <div class="analytics-layout">
-        <div class="map-mock" aria-label="Representative analytics visualization">
-          <div class="field-shape zone-a"></div>
-          <div class="field-shape zone-b"></div>
-          <div class="field-shape zone-c"></div>
-          <div class="map-label">Representative Zone Map</div>
+        <div class="analytics-showcase" aria-label="Analytics preview images">
+          <img class="active" data-preview="orthomosaic" src="media/orthomosaic.jpg" alt="Orthomosaic field map preview" />
+          <img data-preview="vegetation" src="media/vegetation-index-map.jpg" alt="Vegetation index map preview" />
+          <img data-preview="zonation" src="media/zonation-map.jpg" alt="Zonation map preview" />
+          <img data-preview="annotations" src="media/annotations.jpg" alt="Annotated field map preview" />
+          <img data-preview="surface" src="media/digital-surface-model.jpg" alt="Digital surface model preview" />
+          <img data-preview="prescription" src="media/spot-spraying-prescription-maps.jpg" alt="Spot spraying prescription map preview" />
+          <div class="analytics-caption" id="analytics-caption">Orthomosaic Field Map</div>
         </div>
         <div class="analytics-list">
-          <div><h3>Field Map</h3><p>Clear aerial context for the area being evaluated.</p></div>
-          <div><h3>Crop Health Layer</h3><p>Visual indication of vigor, stress, or performance variation.</p></div>
-          <div><h3>Zone Map</h3><p>Grouped areas for scouting, treatment planning, or follow-up review.</p></div>
-          <div><h3>Summary Report</h3><p>Acreage, observations, maps, and recommended next-step discussion.</p></div>
+          <div class="analytics-card active" tabindex="0" data-target="orthomosaic" data-label="Orthomosaic Field Map"><h3>Orthomosaic Field Map</h3><p>Clear aerial context for the area being evaluated.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="vegetation" data-label="Vegetation Index Map"><h3>Vegetation Index Map</h3><p>Visual indication of vigor, stress, or performance variation.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="zonation" data-label="Zonation Map"><h3>Zonation Map</h3><p>Grouped areas for scouting, treatment planning, or follow-up review.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="annotations" data-label="Annotations"><h3>Annotations</h3><p>Marked observations, notes, measurements, and points of interest.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="surface" data-label="Digital Surface Model"><h3>Digital Surface Model</h3><p>Elevation-style context that can help reveal drainage, terrain, or canopy patterns.</p></div>
+          <div class="analytics-card" tabindex="0" data-target="prescription" data-label="Spot-Spraying Prescription Maps"><h3>Spot-Spraying Prescription Maps</h3><p>Planning outputs for compatible targeted application workflows.</p></div>
         </div>
       </div>
     </section>
@@ -100,6 +162,7 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
     const logo = document.getElementById('site-logo');
     const candidates = [
       'media/logo.png',
@@ -114,6 +177,23 @@
       logoIndex += 1;
       if (logoIndex < candidates.length) logo.src = candidates[logoIndex];
       else logo.style.display = 'none';
+    });
+
+    const previewImages = document.querySelectorAll('.analytics-showcase img[data-preview]');
+    const previewCards = document.querySelectorAll('.analytics-card[data-target]');
+    const previewCaption = document.getElementById('analytics-caption');
+
+    function setPreview(target, label) {
+      previewImages.forEach((img) => img.classList.toggle('active', img.dataset.preview === target));
+      previewCards.forEach((card) => card.classList.toggle('active', card.dataset.target === target));
+      if (previewCaption) previewCaption.textContent = label;
+    }
+
+    previewCards.forEach((card) => {
+      const activate = () => setPreview(card.dataset.target, card.dataset.label);
+      card.addEventListener('mouseenter', activate);
+      card.addEventListener('focus', activate);
+      card.addEventListener('click', activate);
     });
   </script>
 </body>
