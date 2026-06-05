@@ -1,5 +1,84 @@
 .centered { margin-left: auto; margin-right: auto; text-align: center; }
 
+.analytics-showcase {
+  position: relative;
+  width: min(100%, 760px);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: calc(var(--radius) + 8px);
+  background: #1b2427;
+  box-shadow: var(--shadow);
+}
+
+.analytics-showcase img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #1b2427;
+  opacity: 0;
+  transform: scale(1.01);
+  transition: opacity 220ms ease, transform 480ms ease;
+}
+
+.analytics-showcase img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.analytics-caption {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  max-width: calc(100% - 36px);
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--white);
+  background: rgba(17, 24, 27, 0.72);
+  font-weight: 850;
+  font-size: 0.92rem;
+}
+
+#analytics .analytics-layout {
+  align-items: stretch;
+}
+
+#analytics .analytics-list {
+  align-self: stretch;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.analytics-list .analytics-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  padding: 18px 22px;
+  cursor: default;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.analytics-list .analytics-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+.analytics-list .analytics-card p {
+  line-height: 1.42;
+}
+
+.analytics-list .analytics-card.active,
+.analytics-list .analytics-card:hover,
+.analytics-list .analytics-card:focus {
+  border-color: rgba(255,255,255,0.42);
+  background: rgba(255,255,255,0.16);
+  transform: translateY(-2px);
+  outline: none;
+}
+
 .value-grid,
 .flow-grid,
 .outputs-layout,
