@@ -12,12 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!main || !contact) return;
   if (engage) engage.remove();
 
+  const heroEyebrow = document.querySelector('.hero-copy .eyebrow');
+  if (heroEyebrow) heroEyebrow.remove();
+
   const services = document.createElement('section');
   services.id = 'services';
   services.className = 'section section-pad muted';
   services.innerHTML = `
     <div class="section-heading centered">
-      <p class="eyebrow">What You'll See</p>
       <h2>Field conditions made easier to act on</h2>
       <p>Drone, RGB, multispectral, and satellite imagery can reveal crop patterns that are hard to see from the road.</p>
     </div>
@@ -35,10 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fieldAction.id = 'field-action';
   fieldAction.className = 'section section-pad';
   fieldAction.innerHTML = `
-    <div class="section-heading centered">
-      <p class="eyebrow">From Maps to Action</p>
-      <h2>Review the field. Plan the next step. Share the right file.</h2>
-    </div>
     <div class="flow-grid">
       <article class="flow-card"><span>01</span><h3>Field Review</h3><p>Review crop stress, variability, anomalies, weeds, boundaries, obstacles, and imagery layers.</p></article>
       <article class="flow-card"><span>02</span><h3>Action Planning</h3><p>Prioritize scouting, sampling, treatment planning, zonation, prescriptions, and targeted operations.</p></article>
