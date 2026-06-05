@@ -60,6 +60,13 @@ Guidance for AI/code agents working in this repository.
 - Do not promise yield improvement, disease detection, chemical results, regulatory compliance, or treatment outcomes unless specifically provided and supported.
 - Prefer language such as “helps identify,” “supports review,” “can guide scouting,” and “may inform planning.”
 
+## Media and assets
+
+- Always ask users to place site media in `/media`.
+- Use `/media` for images, videos, PDFs, and other user-provided site assets.
+- Do not scatter media files across the repository unless an existing structure clearly requires it.
+- Use descriptive, lowercase filenames with hyphens where practical.
+
 ## Mobile and visual review
 
 - Treat mobile layout as a primary review target.
