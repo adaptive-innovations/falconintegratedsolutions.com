@@ -33,18 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   `;
 
-  const fieldAction = document.createElement('section');
-  fieldAction.id = 'field-action';
-  fieldAction.className = 'section section-pad';
-  fieldAction.innerHTML = `
-    <div class="flow-grid">
-      <article class="flow-card"><span>01</span><h3>Field Review</h3><p>Review crop stress, variability, anomalies, weeds, boundaries, obstacles, and imagery layers.</p></article>
-      <article class="flow-card"><span>02</span><h3>Action Planning</h3><p>Prioritize scouting, sampling, treatment planning, zonation, prescriptions, and targeted operations.</p></article>
-      <article class="flow-card"><span>03</span><h3>Monitoring</h3><p>Track progress, treatment effectiveness, crop health changes, and field conditions over time.</p></article>
-      <article class="flow-card"><span>04</span><h3>Export & Share</h3><p>Deliver reports, interactive map links, GIS files, prescription maps, and equipment-ready exports.</p></article>
-    </div>
-  `;
-
   const outputs = document.createElement('section');
   outputs.id = 'outputs';
   outputs.className = 'section section-pad dark';
@@ -89,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   const insertAfterHero = hero && hero.nextSibling ? hero.nextSibling : main.firstChild;
-  [services, fieldAction].forEach((section) => main.insertBefore(section, insertAfterHero));
+  main.insertBefore(services, insertAfterHero);
   if (analytics) main.insertBefore(analytics, outputs);
   [outputs, equipment, claims].forEach((section) => main.insertBefore(section, contact));
 });
