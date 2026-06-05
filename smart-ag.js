@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.site-nav');
   if (nav) {
-    nav.innerHTML = '<a href="#services">Field Conditions</a><a href="#analytics">Analytics</a><a href="#outputs">Outputs</a><a href="#equipment">Equipment</a><a href="#claims">Value</a><a class="nav-cta" href="#contact">Contact</a>';
+    nav.innerHTML = '<a href="#services">Field Conditions</a><a href="#analytics">Analytics</a><a class="nav-cta" href="#contact">Contact</a>';
   }
 
   const main = document.querySelector('main');
